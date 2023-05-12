@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<hmtl>
+  <head> 
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Canvas Draw</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="selector-bar active">
+        <div class="containers color-hue">
+          <label for="hueStart">Hue Start Value</label>
+          <input
+            type="range"
+            min="1"
+            max="360"
+            value="1"
+            class="slider"
+            id="hueStart"
+          />
+          <label for="hueEnd">Hue End Value</label>
+          <input
+            type="range"
+            min="1"
+            max="360"
+            value="360"
+            class="slider"
+            id="hueEnd"
+          />
+        </div>
+        <div class="containers color-saturate">
+          <label for="saturStart">Saturation Start Value</label>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="40"
+            class="slider"
+            id="saturStart"
+          />
+          <label for="saturEnd">Saturation End Value</label>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="60"
+            class="slider"
+            id="saturEnd"
+          />
+        </div>
+        <div class="containers color-light">
+          <label for="lightStart">Lightness Start Value</label>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="40"
+            class="slider"
+            id="lightStart"
+          />
+          <label for="lightEnd">Lightness End Value</label>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="60"
+            class="slider"
+            id="lightEnd"
+          />
+        </div>
+        <div class="containers width-container">
+          <label for="widthStart">Width Start Value</label>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="8"
+            class="slider"
+            id="widthStart"
+          />
+          <label for="widthEnd">Width End Value</label>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="80"
+            class="slider"
+            id="widthEnd"
+          />
+        </div>
+        <div class="strokes-colors">
+          <div class="colors-container">
+            <div class="start">&#10042;</div>
+            <div class="finish">&#10042;</div>
+            <div class="buttons">
+              <button type="button" class="button" id="clear">
+                Clear Canvas
+              </button>
+              <button type="button" class="button" id="stroke">
+                Stroke Reset: On
+              </button>
+              <button type="button" class="button" id="help">Help</button>
+            </div>
+          </div>
+          <div class="strokes">
+            <label for="strokes">Change Rate</label>
+            <input
+              type="range"
+              min="1"
+              max="10"
+              value="5"
+              class="slider"
+              id="strokes"
+            />
+          </div>
+        </div>
+      </div>
+      <dialog class="modal" id="modal-window" type="modal">
+        <h2>What is this?</h2>
+        <p>
+          This is a simple paint tool I made from scratch in HTML, CSS and
+          vanilla JavaScript, as a practice exercise. The basic functionality is painting (mouse or touch), and selecting start/end values for color and line width, and change rate.
+
+        <h2>How to paint/draw</h2>
+        <p>
+          You draw by pressing and holding the left mouse button. Right mouse toggles the control bar. Default behaviour on right click is deactivated, so to access dev tools etc. you have to use the browser menu. On mobile/touch devices everything works the same except you can't toggle the control bar. 
+        </p>
+
+          <h2>What do the sliders do?</h2>
+          <p>
+            It's pretty simple - the drawing tool uses the HSL (Hue Saturation Lightness) color spectre. You chose the start value and end value for all three, plus line width, and when you draw it will cycle forth and back through the values between your start/end points. The change rate determines how fast it cycles through. The rate is set slightly different for H/S/L/width values so the change isn't linear.
+
+          </p>
+          <h2>What does the "Stroke Reset" button do?</h2>
+          <p>
+            Default behaviour is to start each brush stroke from the start value set by the sliders. You can use this button to override this behaviour. Meaning that if you stop drawing/painting the next line you start will start from the color and line width that finished the last line instead. 
+          </p>
+        </p>
+        <button class="button" id="close-modal">Close Help Window</button>
+      </dialog>
+      <canvas class="canvas"></canvas>
+    </div>
+  </body>
+</hmtl>
